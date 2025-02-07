@@ -4,11 +4,13 @@ import Navbar from "./components/Navbar";
 import TableHeader from "./components/TableHeader";
 import StudentCard from "./components/StudentCard";
 import studentsData from "./assets/students.json";
-
+import AddStudent from "./components/AddStudent";
 function App() {
   const [students, setStudents] = useState(studentsData);
 
-  // WIHTOUT REFRACTOR  
+  /***************/
+  // WIHTOUT REFRACTOR
+  /***************/  
   // const [name,setName] =useState("");
   // const [imgUrl,setImgUrl] =useState("");
   // const [phone,setPhone] =useState("");
@@ -34,41 +36,43 @@ function App() {
   //   setStudents(newList);
   // }
 
+  /***************/ 
   // REFRACTORED
-  const [form, setForm] =useState({
-    fullName: "",
-    image: "",
-    phone: "",
-    email: "",
-    program: "",
-    graduationYear: "",
-    graduated: false,
-  });
+  /***************/
+  // const [form, setForm] =useState({
+  //   fullName: "",
+  //   image: "",
+  //   phone: "",
+  //   email: "",
+  //   program: "",
+  //   graduationYear: "",
+  //   graduated: false,
+  // });
 
-  const handleChange= (event)=>{
-    const {name, value, type, checked } = event.target;
+  // const handleChange= (event)=>{
+  //   const {name, value, type, checked } = event.target;
 
-    setForm(val => ({
-      ...val,
-      [name]:type==="checkbox"? checked: value
-    }));
-  }
+  //   setForm(val => ({
+  //     ...val,
+  //     [name]:type==="checkbox"? checked: value
+  //   }));
+  // }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
 
-    const newList = [{...form}, ...students]
+  //   const newList = [{...form}, ...students]
 
-    setStudents(newList);
-  }
+  //   setStudents(newList);
+  // }
 
 
   return (
     <div className="App pt-20">
       <Navbar />
-
+      <AddStudent students={students} setStudents={setStudents}/>
       {/* FORM */}
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <span>Add a Student</span>
         <div>
           <label>
@@ -126,10 +130,10 @@ function App() {
           <button type="submit">Add Student</button>
         </div>
 
-      </form>
+      </form> */}
       {/* FORM END */}
 
-
+      
       {/* TABLE/LIST HEADER */}
       <TableHeader />
 
